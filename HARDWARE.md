@@ -5,10 +5,12 @@
 
 ### Stuff I own for a while but still in their original package...
 - SSD: Samsung V-NAND SSD 850 EVO 500G
-   why I avoid this
+
+   I didn't use the M.2 NVME SSD from the H270 for this build to avoid potential comparability issues.
 - Storage: an old 500G WDC
 - Case: NZXT S340
-   why I avoid this
+
+   I used a new case because the old case is too small and the PSU conflicts with the graphic card. I also need to reserve more space for the fenvi card which takes a PCIe slot.
 
 
 ### New purchase

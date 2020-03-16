@@ -1,4 +1,4 @@
-# hackintosh_asus_z390
+# ASUS TUF Z390-PLUS Hackintosh
 
 ### Before the build
 The trigger of this build is that I need a Mac with powerful graphic card for video editing (final cut Pro). At the beginning, I want to recycle my [H270+i5-7500](H270.md) for the purpose to save some money. Not clever enough to get the job done. Finally purchased new motherboard and CPU and get the rig done.
@@ -45,10 +45,12 @@ This [Chinese post](https://blog.daliansky.net/Common-problems-and-solutions-in-
 
 The tutorial/instruction above are much better than anything I can compose so I won't try to embarrass myself. But I want to write about a few setbacks I encountered during the installation:
 
-1. After boot with Clover to install the OS, the screen stuck at SMCSuperIO. The same issue was reported online but their issue seems related to [this](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/config.plist-per-hardware/coffee-lake#explanation) which I did add.
-Then I think this might be caused I installed FakeSMC.kext. After I delete all kext and follow [youtube video](https://www.youtube.com/watch?v=Mx151kKaJt0&list=PL-0Dm191lc7bpRLJZWmyNpdZDsVUtu28q) exactly, the issue is gone. [screen picture](images/SMCSuperIO.jpg)
-2. After the first issue resolved, the installation process went further but the screen turns into black in the end. The solution is add "agdpmod=pikera" in boot args.
-3. After the second issue resolved, I can successfully format the disk and start the installation. But the loading bar stuck at the final 2min mark. This seems caused by inaccurate memory fix kext. There are a few options here, I start with aptiomemoryfix. I plan to try "OsxAptioFix2Drv.efi or OsxAptioFix2Drv-free2000.efi".
+1. After boot with Clover to install the OS, the screen stuck at SMCSuperIO blablabla [screen shot](images/SMCSuperIO.jpg). The same issue was reported online but their issue seems related to [this](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/config.plist-per-hardware/coffee-lake#explanation) which I did add.
+Then I figure out this might be because I installed FakeSMC.kext which is not selected in the [youtube video](https://www.youtube.com/watch?v=Mx151kKaJt0&list=PL-0Dm191lc7bpRLJZWmyNpdZDsVUtu28q). I remove all the kext and re-installed everything according to the video, problem gone.
+
+2. After the first issue resolved, the installation process went further but the screen shuts down suddenly. The solution is add "agdpmod=pikera" in boot args.
+
+3. After the second issue resolved, I can successfully format the disk and start the installation. But the loading bar stuck at the final 2min marker. This seems caused by inaccurate memory fix kext. There are a few memory fix options out here, I start with AptioMemoryFix.efi which is the only one available in the version of Clover I used which doesn't work for this computer. After study on Google I plan to try OsxAptioFixDrv.efi, OsxAptioFix2Drv.efi, OsxAptioFix3Drv.efi, OsxAptioFix2Drv-free2000.efi one by one. Luckily the second trial with OsxAptioFixDrv.efi works. You can find all in mem_fix folder but remember only one can be used.
 
 ### USB Port Map & SSDT
 
@@ -59,3 +61,15 @@ If you use the same MB as mine the following annotated IO diagram may save you s
 ![About My Mac](images/MB_IO.jpg)
 
 I enabled both front USB ports and all rear USB ports except HS05. My USB.plist and kext can be found in this repo if you want to use.
+
+### Acknowledge
+
+This build cannot success without the help all the useful resource online.
+
+Catalina Vanilla build [guide](https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/)
+
+Reddit [i5-9400f ASUS TUF Z390 post](https://www.reddit.com/r/hackintosh/comments/ck0c0d/build_i59400f_16gb_ram_asus_tuf_z390plus_gaming/)
+
+Youtube [Easily Vanilla Hackintosh Install Guide](https://www.youtube.com/watch?v=Mx151kKaJt0&list=PL-0Dm191lc7bpRLJZWmyNpdZDsVUtu28q)
+
+Github [USBMap](https://github.com/corpnewt/USBMap) and [Instructions](https://www.youtube.com/watch?v=j3V7szXZZTc)
